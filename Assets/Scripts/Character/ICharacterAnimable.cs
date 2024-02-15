@@ -1,13 +1,12 @@
 using System;
 
-public interface ICharacterAnimable
-{
+public interface ICharacterAnimable {
     // Facing direction
     public event Action<float> OnChangeDirection;
     // Movement
     public event Action OnIdleStart;
     public event Action OnWalkStart;
-    
+
     // Jump & Gravity
     public event Action OnJumpStart;
     public event Action OnFallStart;
@@ -28,6 +27,7 @@ public interface ICharacterAnimable
         Jump,
         Fall,
         Landed,
-        Grab
+        Grab,
+        WallSlide
     }
 }

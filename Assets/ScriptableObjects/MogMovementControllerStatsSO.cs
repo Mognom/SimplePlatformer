@@ -48,6 +48,10 @@ public class MogMovementControllerStatsSO : ScriptableObject {
     [Tooltip("Horizontal hitbox radious")]
     [SerializeField] private float horizontalHitBoxRadious = .25f;
 
+    [Header("Wall slide")]
+    [Tooltip("Max vertical speed when wall sliding")]
+    [SerializeField] private float slideTerminalVelocity = 4;
+
     public float MoveSpeed => moveSpeed;
     public float RunSpeed => runSpeed;
     public LayerMask DefaultColliderMask => defaultColliderMask;
@@ -70,4 +74,6 @@ public class MogMovementControllerStatsSO : ScriptableObject {
     public float LedgeGrabDistance => ledgeGrabDistance;
     public float VerticalHitBoxRadious => verticalHitBoxRadious;
     public float HorizontalHitBoxRadious => horizontalHitBoxRadious;
+
+    public float SlideTerminalVelocity => slideTerminalVelocity;
 }

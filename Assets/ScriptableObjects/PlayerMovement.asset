@@ -25,7 +25,7 @@ MonoBehaviour:
     m_Bits: 0
   groundCheckDistance: 0.1
   minimumDotProductForGround: 0.8
-  terminalVelocity: 16
+  terminalVelocity: 32
   jumpGravity: -32
   fallGravity: -40
   hugGroundVelocity: -2
@@ -38,4 +38,5 @@ MonoBehaviour:
     m_Bits: 0
   ledgeGrabDistance: 0.1
   verticalHitBoxRadious: 0.5
-  horizontalHitBoxRadious: 0.25
+  horizontalHitBoxRadious: 0.5
+  slideTerminalVelocity: 1

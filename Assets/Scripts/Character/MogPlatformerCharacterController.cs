@@ -25,6 +25,9 @@ public class MogPlatformerCharacterController : MonoBehaviour, ICharacterAnimabl
     private int isGrabbingLedge = 0; // 0= no, -1 = left, 1 = right
     private bool isDropping = false;
 
+    // Walls
+    private int isWallSliding = 0; // 0= no, -1 = left, 1 = right
+
     // Input
     private float horizontalMoveValue;
     private bool isSprinting;
@@ -40,6 +43,7 @@ public class MogPlatformerCharacterController : MonoBehaviour, ICharacterAnimabl
     public event Action OnFallStart;
     public event Action<float> OnLanded;
     public event Action OnLedgeGrabStart;
+    public event Action OnWallSlideStart;
     public event Action<CharacterMovementAction> OnCurrentActionChange;
 
     private void Awake() {
@@ -62,7 +66,11 @@ public class MogPlatformerCharacterController : MonoBehaviour, ICharacterAnimabl
         // Try to grab ledges if the player is falling down and not actively dropping down
         if (isFalling && !isDropping) {
             if (horizontalMoveValue != 0) {
-                TryGrabLedge(transform.position, horizontalMoveValue);
+                if (isGrabbingLedge == 0 && !TryGrabLedge(transform.position, horizontalMoveValue)) {
+                    if (isWallSliding == 0) {
+                        TryWallSlide(transform.position, horizontalMoveValue);
+                    }
+                }
             }
         }
 
@@ -77,10 +85,11 @@ public class MogPlatformerCharacterController : MonoBehaviour, ICharacterAnimabl
             PerformJump();
         }
 
-
-        // If moving opposite of the ledge direction, let go
+        // If moving opposite of the ledge/wall direction, let go
         if (horizontalMoveValue + isGrabbingLedge == 0) {
             isGrabbingLedge = 0;
+        } else if (horizontalMoveValue + isWallSliding == 0) {
+            isWallSliding = 0;
         } else {
             // Movement IS disabled if grabbing a ledge
             if (isGrabbingLedge != 0) {
@@ -132,16 +141,22 @@ public class MogPlatformerCharacterController : MonoBehaviour, ICharacterAnimabl
             }
         } else {
             if (!isGrounded) {
-                // Fall down
-                currentFallVelocity = Math.Max(currentFallVelocity + statsSO.FallGravity * Time.deltaTime, -statsSO.TerminalVelocity);
+                if (isWallSliding != 0) {
+                    // Slide down
+                    currentFallVelocity = Math.Max(currentFallVelocity + statsSO.FallGravity * Time.deltaTime, -statsSO.SlideTerminalVelocity);
+                } else {
+                    // Fall down
+                    currentFallVelocity = Math.Max(currentFallVelocity + statsSO.FallGravity * Time.deltaTime, -statsSO.TerminalVelocity);
+                    ChangeCurrentAction(CharacterMovementAction.Fall);
+                }
                 velocityToApply = currentFallVelocity;
                 isFalling = true;
-                ChangeCurrentAction(CharacterMovementAction.Fall);
+
             } else {
                 // Grounded movement
                 if (isFalling) {
                     ChangeCurrentAction(CharacterMovementAction.Landed, currentFallVelocity);
-
+                    isWallSliding = 0;
                     currentFallVelocity = 0;
                     isFalling = false;
                 }
@@ -173,9 +188,6 @@ public class MogPlatformerCharacterController : MonoBehaviour, ICharacterAnimabl
     private void PerformJump() {
         if (statsSO.CoyoteJumpTime >= Time.time - lastGroundedTime) {
             lastJumpInputTime = -1;
-            if (!isGrounded) {
-                Debug.Log("Coyote Jumps!");
-            }
             currentFallVelocity = statsSO.InitialJumpSpeed;
             isGrabbingLedge = 0;
             ChangeCurrentAction(CharacterMovementAction.Jump);
@@ -217,6 +229,7 @@ public class MogPlatformerCharacterController : MonoBehaviour, ICharacterAnimabl
         RaycastHit2D hit = Physics2D.Raycast((Vector2)ledgeCheckLocation, directionVector, statsSO.LedgeGrabDistance, statsSO.LedgeColliderMask);
 
         if (hit.collider) {
+            // TODO Improve this logic to not rely on collider.transform
             transform.position = hit.collider.transform.position + new Vector3(-horizontalDirection * statsSO.HorizontalHitBoxRadious, -statsSO.VerticalHitBoxRadious, 0);
             GrabLedge((int)horizontalDirection);
             return true;
@@ -229,6 +242,32 @@ public class MogPlatformerCharacterController : MonoBehaviour, ICharacterAnimabl
         isFalling = false;
         ChangeCurrentAction(CharacterMovementAction.Grab);
         OnLedgeGrabStart?.Invoke();
+    }
+
+    /* 
+     * Try to grab a ledge in the given direction.
+     * If a ledge is found, grab it and stop falling
+     */
+    private bool TryWallSlide(Vector3 newPosition, float horizontalDirection) {
+        // Can only grab a ledge if falling down
+        Vector2 directionVector = new(horizontalDirection, 0);
+
+        Vector2 ledgeCheckLocation = (Vector2)newPosition + new Vector2(horizontalDirection * statsSO.HorizontalHitBoxRadious, statsSO.VerticalHitBoxRadious);
+        RaycastHit2D hit = Physics2D.Raycast((Vector2)ledgeCheckLocation, directionVector, statsSO.LedgeGrabDistance, statsSO.GroundColliderMask);
+        if (hit.collider) {
+            // TODO Improve this logic to not rely on collider.transform
+            //transform.position = hit.collider.transform.position + new Vector3(-horizontalDirection * statsSO.HorizontalHitBoxRadious, -statsSO.VerticalHitBoxRadious, 0);
+            GrabWall((int)horizontalDirection);
+            return true;
+        }
+
+        return false;
+    }
+
+    private void GrabWall(int horizontalDirection) {
+        isWallSliding = horizontalDirection;
+        ChangeCurrentAction(CharacterMovementAction.WallSlide);
+        OnWallSlideStart?.Invoke();
     }
 
     // Check if the object is standing on ground
