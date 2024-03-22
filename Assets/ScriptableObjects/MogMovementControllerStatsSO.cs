@@ -5,6 +5,7 @@ public class MogMovementControllerStatsSO : ScriptableObject {
     [Tooltip("Horizontal speed")]
     [SerializeField] private float moveSpeed = 4;
     [SerializeField] private float runSpeed = 6;
+    [SerializeField] private float impulseDuration = .3f;
 
     [Header("Ground values")]
     [Tooltip("Layer mask that should be used to detect ground collisions")]
@@ -50,10 +51,16 @@ public class MogMovementControllerStatsSO : ScriptableObject {
 
     [Header("Wall slide")]
     [Tooltip("Max vertical speed when wall sliding")]
+    [SerializeField] private bool canWallSlide = true;
+    [SerializeField] private bool canWallJump = true;
+    [SerializeField] private Vector2 wallJumpImpulse;
+
     [SerializeField] private float slideTerminalVelocity = 4;
 
     public float MoveSpeed => moveSpeed;
     public float RunSpeed => runSpeed;
+    public float ImpulseDuration => impulseDuration;
+
     public LayerMask DefaultColliderMask => defaultColliderMask;
     public LayerMask GroundColliderMask => groundColliderMask;
     public LayerMask PlatformColliderMask => platformColliderMask;
@@ -75,5 +82,8 @@ public class MogMovementControllerStatsSO : ScriptableObject {
     public float VerticalHitBoxRadious => verticalHitBoxRadious;
     public float HorizontalHitBoxRadious => horizontalHitBoxRadious;
 
+    public bool CanWallSlide => canWallSlide;
+    public bool CanWallJump => canWallJump;
+    public Vector2 WallJumpImpulse => wallJumpImpulse;
     public float SlideTerminalVelocity => slideTerminalVelocity;
 }
