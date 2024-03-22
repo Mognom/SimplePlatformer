@@ -110,7 +110,7 @@ public class MogPlatformerCharacterController : MonoBehaviour, ICharacterAnimabl
         }
 
         float targetHorizontalVelocity;
-        if (isSprinting) {
+        if (isSprinting && isGrounded) {
             targetHorizontalVelocity = horizontalMoveValue * statsSO.RunSpeed;
         } else {
             targetHorizontalVelocity = horizontalMoveValue * statsSO.MoveSpeed;
