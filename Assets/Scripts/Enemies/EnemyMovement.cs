@@ -9,8 +9,6 @@ public class EnemyMovement : MonoBehaviour {
     private Rigidbody2D rb;
     private float direction;
 
-
-
     private void Awake() {
         currentTimeToTurn = timeToTurn;
         rb = GetComponent<Rigidbody2D>();

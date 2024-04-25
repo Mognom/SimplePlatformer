@@ -69,6 +69,11 @@ public class MogPlatformerCharacterController : MonoBehaviour, ICharacterAnimabl
         this.isSprinting = isSprinting;
     }
 
+    public void ForceJump() {
+        currentFallVelocity = statsSO.InitialJumpSpeed;
+        isJumping = true;
+    }
+
     private int GetCurrentWallSlideDirection() {
         return isWallSliding ? wallSlideDirection : 0;
     }
