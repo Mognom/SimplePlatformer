@@ -74,16 +74,6 @@ public class MogPlatformerCharacterController : MonoBehaviour, ICharacterAnimabl
     }
 
     private void Update() {
-        // Try to grab ledges if the player is falling down and not actively droppiºng down
-        if (isFalling && !isDropping) {
-            if (isGrabbingLedge == 0 && !TryGrabLedge(transform.position, horizontalMoveValue)) {
-                float wallGrabDirection = horizontalMoveValue != 0 ? horizontalMoveValue : GetCurrentWallSlideDirection();
-                if (wallGrabDirection != 0) {
-                    TryWallSlide(transform.position, wallGrabDirection);
-                }
-            }
-        }
-
         // handle horizontal movement
         Vector2 targetVelocity = Vector2.zero;
 
@@ -139,14 +129,22 @@ public class MogPlatformerCharacterController : MonoBehaviour, ICharacterAnimabl
                 ChangeCurrentAction(CharacterMovementAction.Walk);
             } else {
                 if (currentAction != CharacterMovementAction.Idle) {
-                    Debug.Log("IDLE");
                     ChangeCurrentAction(CharacterMovementAction.Idle);
                 }
             }
         }
-
         // Try to move the players to the desired position
         rb.velocity = targetVelocity;
+
+        // Try to grab ledges if the player is falling down and not actively droppiºng down
+        if (isFalling && !isDropping) {
+            if (isGrabbingLedge == 0 && !TryGrabLedge(transform.position, Math.Sign(targetVelocity.x))) {
+                float wallGrabDirection = targetVelocity.x != 0 ? Math.Sign(targetVelocity.x) : GetCurrentWallSlideDirection();
+                if (wallGrabDirection != 0) {
+                    TryWallSlide(transform.position, wallGrabDirection);
+                }
+            }
+        }
     }
 
     // Calculate the frames vertical velocity based on jumping/falling/grounded status
@@ -264,6 +262,7 @@ public class MogPlatformerCharacterController : MonoBehaviour, ICharacterAnimabl
      * If a ledge is found, grab it and stop falling
      */
     private bool TryGrabLedge(Vector3 newPosition, float horizontalDirection) {
+
         if (horizontalDirection == 0) {
             return false;
         }
