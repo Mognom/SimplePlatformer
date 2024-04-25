@@ -139,6 +139,7 @@ public class MogPlatformerCharacterController : MonoBehaviour, ICharacterAnimabl
                 ChangeCurrentAction(CharacterMovementAction.Walk);
             } else {
                 if (currentAction != CharacterMovementAction.Idle) {
+                    Debug.Log("IDLE");
                     ChangeCurrentAction(CharacterMovementAction.Idle);
                 }
             }
