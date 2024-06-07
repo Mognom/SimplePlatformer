@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EnemyMovement : MonoBehaviour {
+public class EnemyMovement : MonoBehaviour, IEnemyDamageDealer {
 
     [SerializeField] private float moveSpeed;
     [SerializeField] private float timeToTurn;
