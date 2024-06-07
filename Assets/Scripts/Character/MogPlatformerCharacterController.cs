@@ -216,27 +216,26 @@ public class MogPlatformerCharacterController : MonoBehaviour, ICharacterAnimabl
 
     private void PerformJump() {
         if (statsSO.CoyoteJumpTime >= Time.time - lastGroundedTime) {
-            if (isGrounded || statsSO.CanWallJump) {
-                lastJumpInputTime = -1;
-                if (isGrounded) {
-                    // Ground jump
-                    currentFallVelocity = statsSO.InitialJumpSpeed;
-                    isJumping = true;
-                } else {
-                    // Wall jump
-                    currentFallVelocity = statsSO.WallJumpImpulse.y;
-                    currentImpulse = statsSO.WallJumpImpulse.x;
-                    currentImpulseDirection = wallSlideDirection * -1;
-                    currentImpulseRemainingTime = statsSO.ImpulseDuration;
-                    isJumping = false; // flagged to false so impulse can't be cancelled
-                }
+            lastJumpInputTime = -1;
 
-                // update controller status
-                isGrabbingLedge = 0;
-                isWallSliding = false;
-                isGrounded = false;
-                ChangeCurrentAction(CharacterMovementAction.Jump);
+            if (statsSO.CanWallJump && isWallSliding) {
+                // Wall jump
+                currentFallVelocity = statsSO.WallJumpImpulse.y;
+                currentImpulse = statsSO.WallJumpImpulse.x;
+                currentImpulseDirection = wallSlideDirection * -1;
+                currentImpulseRemainingTime = statsSO.ImpulseDuration;
+                isJumping = false; // flagged to false so impulse can't be cancelled
+            } else {
+                // Ground jump
+                currentFallVelocity = statsSO.InitialJumpSpeed;
+                isJumping = true;
             }
+
+            // update controller status
+            isGrabbingLedge = 0;
+            isWallSliding = false;
+            isGrounded = false;
+            ChangeCurrentAction(CharacterMovementAction.Jump);
         }
     }
 
