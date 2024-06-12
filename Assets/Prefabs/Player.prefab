@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4399845520459705785}
   - component: {fileID: 1044300142411233510}
   - component: {fileID: 1524319332561218211}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SlideParticles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4902,7 +4902,7 @@ GameObject:
   - component: {fileID: 5954356811320340797}
   - component: {fileID: 8368982828382833182}
   - component: {fileID: 7711813042536988062}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: OldPlayerVisual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5008,7 +5008,7 @@ GameObject:
   - component: {fileID: 1416345952605855931}
   - component: {fileID: 2289235675315052052}
   - component: {fileID: 8051767328750243149}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: MoveParticles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9899,7 +9899,7 @@ GameObject:
   - component: {fileID: 3113144767164558364}
   - component: {fileID: 894531173746021151}
   - component: {fileID: 8718855097270570699}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LandParticles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14848,7 +14848,7 @@ GameObject:
   - component: {fileID: 5179175131376997446}
   - component: {fileID: 5261661623888514879}
   - component: {fileID: 5911651213750757398}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: KillTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14938,7 +14938,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 37452511292066719}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Particles (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14975,7 +14975,7 @@ GameObject:
   - component: {fileID: 4296245879166146995}
   - component: {fileID: 229213426943499501}
   - component: {fileID: 8885336920712946305}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: JumpParticles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19927,7 +19927,7 @@ GameObject:
   - component: {fileID: 7574710750159398615}
   - component: {fileID: 4155498668563722302}
   - component: {fileID: 3126304501961176324}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20077,7 +20077,7 @@ GameObject:
   - component: {fileID: 3416213750122314171}
   - component: {fileID: 154144605699399015}
   - component: {fileID: 3126109285796842147}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: PlayerVisual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
