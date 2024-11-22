@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 3171091139154952252}
   - component: {fileID: 6011839256470874699}
   - component: {fileID: 236273539408158844}
+  - component: {fileID: 7186426835256111500}
+  - component: {fileID: 1167514680640768492}
   m_Layer: 0
   m_Name: PlantVisual
   m_TagString: Untagged
@@ -106,6 +108,32 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &7186426835256111500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 777813946868628446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ff83809b4a31b5449c181187ff84466, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletSpawnPoint: {fileID: 8474692492416540607}
+  bullet: {fileID: 6386998537462129202, guid: a8678e0271c92294bb83f47d7e99b1af, type: 3}
+--- !u!114 &1167514680640768492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 777813946868628446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d66e04a262de8ba4294f1d2761796859, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3622363267053181998
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,5 +1,6 @@
 using UnityEngine;
 
+
 public class EnemyMovement : MonoBehaviour, IEnemyDamageDealer {
 
     [SerializeField] private float moveSpeed;

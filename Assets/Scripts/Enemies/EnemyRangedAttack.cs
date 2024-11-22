@@ -1,8 +1,7 @@
-using MognomUtils;
 using UnityEngine;
 
 public class EnemyRangedAttack : MonoBehaviour {
-
+    private const string ATTACK_ANIMATION_NAME = "Attack";
 
     [SerializeField] private float attackCooldown;
     private float lastAttackTime;
@@ -13,9 +12,10 @@ public class EnemyRangedAttack : MonoBehaviour {
     [SerializeField] private float detectionRange;
     [SerializeField] private LayerMask playerMask;
 
+    private Animator animator;
 
     private void Start() {
-
+        animator = GetComponentInChildren<Animator>();
     }
 
     private void Update() {
@@ -27,7 +27,8 @@ public class EnemyRangedAttack : MonoBehaviour {
 
     private void TryAttack() {
         if (CheckPlayerInAttackRange()) {
-            bullet.Spawn(bulletSpawnPoint.position, bulletSpawnPoint.rotation);
+            animator.CrossFade(ATTACK_ANIMATION_NAME, 0, 0);
+            //bullet.Spawn(bulletSpawnPoint.position, bulletSpawnPoint.rotation);
         }
 
         // Attemp is wasted even if it didnt shoot

@@ -167,7 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45bbdb636eb3af44699886ecd6105bdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 1
+  hp: 2
   parent: {fileID: 2329094207219786358}
 --- !u!61 &3855442578217708275
 BoxCollider2D:
@@ -225,6 +225,7 @@ GameObject:
   - component: {fileID: 1789581962813810989}
   - component: {fileID: 2969316851708023663}
   - component: {fileID: 9059617458217114447}
+  - component: {fileID: 6212289148300695810}
   m_Layer: 0
   m_Name: SlimeVisual
   m_TagString: Untagged
@@ -243,7 +244,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 1
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3955357943370710012}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
@@ -320,3 +321,15 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &6212289148300695810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7066648973815958315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d66e04a262de8ba4294f1d2761796859, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

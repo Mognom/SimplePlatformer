@@ -2586,14 +2586,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Slime
       objectReference: {fileID: 0}
-    - target: {fileID: 2484295752160127570, guid: c57d99d9c894740498ec3fa1eb7abaf2, type: 3}
-      propertyPath: m_Size.y
-      value: 0.42390418
-      objectReference: {fileID: 0}
-    - target: {fileID: 2484295752160127570, guid: c57d99d9c894740498ec3fa1eb7abaf2, type: 3}
-      propertyPath: m_Offset.y
-      value: -0.16976178
-      objectReference: {fileID: 0}
     - target: {fileID: 3955357943370710012, guid: c57d99d9c894740498ec3fa1eb7abaf2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.87
@@ -2647,10 +2639,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 236273539408158844, guid: 4c9c9f84bf4164f4386695d86cb630dd, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 4556550c2e795be41bd38e83c013af6e, type: 2}
     - target: {fileID: 801478263754314219, guid: 4c9c9f84bf4164f4386695d86cb630dd, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7.3
@@ -2822,10 +2810,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4034644761846939081, guid: dbafa81795fec524abb7ab162f8fa638, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: d26c6f211d4d6ff46b2efeedebb8c3bf, type: 2}
     - target: {fileID: 7431657486717202136, guid: dbafa81795fec524abb7ab162f8fa638, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.2
