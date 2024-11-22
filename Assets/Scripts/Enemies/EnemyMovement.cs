@@ -7,27 +7,25 @@ public class EnemyMovement : MonoBehaviour, IEnemyDamageDealer {
 
     private float currentTimeToTurn;
     private Rigidbody2D rb;
-    private float direction;
 
     private void Awake() {
         currentTimeToTurn = timeToTurn;
         rb = GetComponent<Rigidbody2D>();
-        direction = 1;
-        rb.velocity = moveSpeed * direction * Vector3.right;
+        rb.velocity = moveSpeed * transform.right;
     }
 
     private void Update() {
         if ((currentTimeToTurn -= Time.deltaTime) <= 0) {
             currentTimeToTurn = timeToTurn;
-            direction *= -1;
 
-            // flip to face towards the new direciton 
-            Vector3 scale = transform.localScale;
-            scale.x *= -1;
-            transform.localScale = scale;
+            // flip to face towards the new direciton
+            transform.eulerAngles = transform.eulerAngles + new Vector3(0, 180, 0);
+            //Vector3 scale = transform.localScale;
+            //scale.x *= -1;
+            //transform.localScale = scale;
 
             // Update movement
-            rb.velocity = moveSpeed * direction * Vector3.right;
+            rb.velocity = moveSpeed * transform.right;
         }
     }
 }
