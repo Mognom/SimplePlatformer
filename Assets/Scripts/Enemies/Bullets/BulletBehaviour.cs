@@ -10,10 +10,14 @@ public class BulletBehaviour : MonoBehaviour, IEnemyDamageDealer {
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        this.Recycle();
+        if (gameObject.activeSelf) {
+            this.Recycle();
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision) {
-        this.Recycle();
+        if (gameObject.activeSelf) {
+            this.Recycle();
+        }
     }
 }
