@@ -355,10 +355,10 @@ MonoBehaviour:
   attackCooldown: 2
   bulletSpawnPoint: {fileID: 8474692492416540607}
   bullet: {fileID: 6386998537462129202, guid: a8678e0271c92294bb83f47d7e99b1af, type: 3}
-  detectionRange: 10
+  detectionRange: 20
   playerMask:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 640
 --- !u!1 &5796577095985529678
 GameObject:
   m_ObjectHideFlags: 0
@@ -402,7 +402,7 @@ GameObject:
   - component: {fileID: 6184033978112593037}
   - component: {fileID: 8401985242928948749}
   - component: {fileID: 2290065367867505686}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: KillTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}

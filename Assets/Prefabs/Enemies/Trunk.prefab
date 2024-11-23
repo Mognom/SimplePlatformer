@@ -274,7 +274,7 @@ GameObject:
   - component: {fileID: 4859553201980551596}
   - component: {fileID: 3890633428894091128}
   - component: {fileID: 2126417272337280283}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: KillTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -573,7 +573,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8572750d01919b24a85de1597af7c29f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackCooldown: 1
+  attackCooldown: 0.5
   bulletSpawnPoint: {fileID: 6216794265797518597}
   bullet: {fileID: 6386998537462129202, guid: a8678e0271c92294bb83f47d7e99b1af, type: 3}
   detectionRange: 10

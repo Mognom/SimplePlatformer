@@ -11,7 +11,7 @@ public class PlayerDeathCollider : MonoBehaviour {
         if (enemy != null) {
             if (--hp <= 0) {
                 // TODO death animations and reset scene
-                //Destroy(parent);
+                Destroy(parent);
             }
         }
     }

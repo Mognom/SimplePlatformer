@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6386998537462129202}
   - component: {fileID: 685346418143915996}
   - component: {fileID: 4781883107055353661}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: PlantBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2877346547512253069}
   - component: {fileID: 8015859512446856896}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: BulletVisual
   m_TagString: Untagged
   m_Icon: {fileID: 0}

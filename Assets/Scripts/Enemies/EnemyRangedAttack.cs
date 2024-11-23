@@ -29,14 +29,12 @@ public class EnemyRangedAttack : MonoBehaviour {
         if (CheckPlayerInAttackRange()) {
             animator.CrossFade(ATTACK_ANIMATION_NAME, 0, 0);
             //bullet.Spawn(bulletSpawnPoint.position, bulletSpawnPoint.rotation);
+            lastAttackTime = Time.time;
         }
-
-        // Attemp is wasted even if it didnt shoot
-        lastAttackTime = Time.time;
     }
 
     private bool CheckPlayerInAttackRange() {
         RaycastHit2D hit = Physics2D.Raycast(bulletSpawnPoint.position, bulletSpawnPoint.right, detectionRange, playerMask);
-        return hit.collider != null;
+        return hit.collider != null && hit.collider.gameObject.GetComponent<PlayerInput>() != null;
     }
 }
