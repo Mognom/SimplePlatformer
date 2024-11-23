@@ -1,0 +1,34 @@
+{
+    "name": "MenuInputActions",
+    "maps": [
+        {
+            "name": "PopupMenu",
+            "id": "52205f45-b032-49a4-aa02-748b51e014f6",
+            "actions": [
+                {
+                    "name": "ToggleMenu",
+                    "type": "Button",
+                    "id": "bd51f04a-025c-4a8d-93e2-63774dc44469",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "54d77910-939c-4c87-adc0-fd0703861432",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ToggleMenu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
