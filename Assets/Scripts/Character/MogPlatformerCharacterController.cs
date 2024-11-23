@@ -54,7 +54,6 @@ public class MogPlatformerCharacterController : MonoBehaviour, ICharacterAnimabl
     public event Action<CharacterMovementAction> OnCurrentActionChange;
 
     private void Awake() {
-        Debug.Log("AWAKES");
         rb = GetComponent<Rigidbody2D>();
         capsuleCollider2D = GetComponent<CapsuleCollider2D>();
         currentCollisionLayer = statsSO.DefaultColliderMask;

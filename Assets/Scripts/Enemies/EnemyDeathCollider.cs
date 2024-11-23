@@ -1,5 +1,7 @@
 using UnityEngine;
 
+
+[RequireComponent(typeof(AudioSource))]
 public class EnemyDeathCollider : MonoBehaviour {
     private const string HIT_ANIMATION_NAME = "Hit"; // This animation names are shared through all enemies
     private const string DEATH_ANIMATION_NAME = "Death";
@@ -7,8 +9,10 @@ public class EnemyDeathCollider : MonoBehaviour {
     [SerializeField] private GameObject parent;
 
     private Animator animator;
+    private AudioSource audioSource;
     private void Start() {
         animator = parent.GetComponentInChildren<Animator>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     void OnTriggerEnter2D(Collider2D other) {
@@ -16,6 +20,7 @@ public class EnemyDeathCollider : MonoBehaviour {
 
         if (player != null) {
             player.ForceJump();
+            audioSource.Play();
             if (--hp <= 0) {
                 animator.CrossFade(DEATH_ANIMATION_NAME, 0, 0);
             } else {
