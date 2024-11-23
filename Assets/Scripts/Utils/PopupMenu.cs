@@ -34,7 +34,9 @@ public class PopupMenu : MonoBehaviour {
     }
 
     public void OnExitPressed() {
-
+        currentStatus = false;
+        Time.timeScale = currentStatus ? 0f : 1f;
+        ScenesController.I.GoToScene(SceneName.LevelSelect);
     }
 
     public void OnMusicMutePressed(ToggleButtonSprite tbs) {

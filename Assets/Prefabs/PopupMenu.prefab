@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 6589223200942340900}
   - component: {fileID: 8836971868761321110}
   - component: {fileID: 8140749811985085170}
-  - component: {fileID: 8129897321418584133}
   m_Layer: 5
   m_Name: BackToLevelSelect
   m_TagString: Untagged
@@ -121,9 +120,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8129897321418584133}
-        m_TargetAssemblyTypeName: ChangeSceneButton, Assembly-CSharp
-        m_MethodName: OnPressed
+      - m_Target: {fileID: 6187419727108995856}
+        m_TargetAssemblyTypeName: PopupMenu, Assembly-CSharp
+        m_MethodName: OnExitPressed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -133,19 +132,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &8129897321418584133
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 448102724206902971}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da15eb19297196f4baaf8c7bc565bca1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetScene: 1
 --- !u!1 &979794841149677814
 GameObject:
   m_ObjectHideFlags: 0

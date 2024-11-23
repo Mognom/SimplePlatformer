@@ -54,6 +54,7 @@ public class MogPlatformerCharacterController : MonoBehaviour, ICharacterAnimabl
     public event Action<CharacterMovementAction> OnCurrentActionChange;
 
     private void Awake() {
+        Debug.Log("AWAKES");
         rb = GetComponent<Rigidbody2D>();
         capsuleCollider2D = GetComponent<CapsuleCollider2D>();
         currentCollisionLayer = statsSO.DefaultColliderMask;
@@ -140,7 +141,6 @@ public class MogPlatformerCharacterController : MonoBehaviour, ICharacterAnimabl
         }
         // Try to move the players to the desired position
         rb.velocity = targetVelocity;
-
         // Try to grab ledges if the player is falling down and not actively droppiºng down
         if (isFalling && !isDropping) {
             if (isGrabbingLedge == 0 && !TryGrabLedge(transform.position, Math.Sign(targetVelocity.x))) {
