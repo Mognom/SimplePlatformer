@@ -7,8 +7,8 @@ using UnityEngine.SceneManagement;
 public enum SceneName { None = -1, MainMenu, LevelSelect, Level1, Level2, Level3 }
 
 public class ScenesController : PersistentSingleton<ScenesController> {
-    [Tooltip("Add a loading panel if it need load large scenes")]
-    [SerializeField] private GameObject loadingPanel;
+    //[Tooltip("Add a loading panel if it need load large scenes")]
+    //[SerializeField] private GameObject loadingPanel;
 
     private SceneName currentScene, lastScene;
 
