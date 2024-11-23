@@ -2359,10 +2359,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PopupMenu
       objectReference: {fileID: 0}
-    - target: {fileID: 8140749811985085170, guid: 4aaf91a02fe12d5458c6ad60df320d70, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 3949448121628550520}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2596,17 +2592,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f7b1d0221da65754186511410f69b2fb, type: 3}
---- !u!114 &3949448121628550520 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2158430940226849143, guid: f7b1d0221da65754186511410f69b2fb, type: 3}
-  m_PrefabInstance: {fileID: 3949448121628550519}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 127f909d053a48746b163725d520e9eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &5953501432646469040
 PrefabInstance:
   m_ObjectHideFlags: 0
