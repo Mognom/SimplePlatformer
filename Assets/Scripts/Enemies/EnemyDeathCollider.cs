@@ -19,7 +19,7 @@ public class EnemyDeathCollider : MonoBehaviour {
         MogPlatformerCharacterController player = other.GetComponent<MogPlatformerCharacterController>();
 
         if (player != null) {
-            player.ForceJump();
+            player.ForceJump(.7f);
             audioSource.Play();
             if (--hp <= 0) {
                 animator.CrossFade(DEATH_ANIMATION_NAME, 0, 0);
