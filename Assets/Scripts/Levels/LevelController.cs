@@ -1,14 +1,20 @@
 
 using MognomUtils;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class LevelController : Singleton<LevelController> {
     [SerializeField] private int levelNumber;
+    protected override void Awake() {
+        base.Awake();
+        PlayerInputActions input = new PlayerInputActions();
+        input.Reset.Enable();
 
+        input.Reset.Reset.performed += OnResetPressed;
+    }
 
-    // Reset player position
-    private void OnPlayerDeath() {
-
+    private void OnResetPressed(InputAction.CallbackContext context) {
+        ScenesController.I.ReloadCurrentScene();
     }
 
     public void OnLevelComplete() {

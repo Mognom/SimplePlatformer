@@ -42,5 +42,5 @@ MonoBehaviour:
   horizontalHitBoxRadious: 0.5
   canWallSlide: 1
   canWallJump: 1
-  wallJumpImpulse: {x: 16, y: 12}
+  wallJumpImpulse: {x: 20, y: 12}
   slideTerminalVelocity: 2

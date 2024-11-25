@@ -215,6 +215,34 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Reset"",
+            ""id"": ""86e7aeaf-411f-423b-83b8-9038180e485c"",
+            ""actions"": [
+                {
+                    ""name"": ""Reset"",
+                    ""type"": ""Button"",
+                    ""id"": ""4b240d90-4212-4f24-821b-1606d367c3a1"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""373d5a72-34d4-4dad-91b9-88ed27248445"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Reset"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -228,6 +256,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         // Attack
         m_Attack = asset.FindActionMap("Attack", throwIfNotFound: true);
         m_Attack_Newaction = m_Attack.FindAction("New action", throwIfNotFound: true);
+        // Reset
+        m_Reset = asset.FindActionMap("Reset", throwIfNotFound: true);
+        m_Reset_Reset = m_Reset.FindAction("Reset", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -401,6 +432,52 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         }
     }
     public AttackActions @Attack => new AttackActions(this);
+
+    // Reset
+    private readonly InputActionMap m_Reset;
+    private List<IResetActions> m_ResetActionsCallbackInterfaces = new List<IResetActions>();
+    private readonly InputAction m_Reset_Reset;
+    public struct ResetActions
+    {
+        private @PlayerInputActions m_Wrapper;
+        public ResetActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Reset => m_Wrapper.m_Reset_Reset;
+        public InputActionMap Get() { return m_Wrapper.m_Reset; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(ResetActions set) { return set.Get(); }
+        public void AddCallbacks(IResetActions instance)
+        {
+            if (instance == null || m_Wrapper.m_ResetActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_ResetActionsCallbackInterfaces.Add(instance);
+            @Reset.started += instance.OnReset;
+            @Reset.performed += instance.OnReset;
+            @Reset.canceled += instance.OnReset;
+        }
+
+        private void UnregisterCallbacks(IResetActions instance)
+        {
+            @Reset.started -= instance.OnReset;
+            @Reset.performed -= instance.OnReset;
+            @Reset.canceled -= instance.OnReset;
+        }
+
+        public void RemoveCallbacks(IResetActions instance)
+        {
+            if (m_Wrapper.m_ResetActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IResetActions instance)
+        {
+            foreach (var item in m_Wrapper.m_ResetActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_ResetActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public ResetActions @Reset => new ResetActions(this);
     public interface IMoveActions
     {
         void OnMovement(InputAction.CallbackContext context);
@@ -411,5 +488,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     public interface IAttackActions
     {
         void OnNewaction(InputAction.CallbackContext context);
+    }
+    public interface IResetActions
+    {
+        void OnReset(InputAction.CallbackContext context);
     }
 }

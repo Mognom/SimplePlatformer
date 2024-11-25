@@ -464,7 +464,7 @@ GameObject:
   - component: {fileID: 6122384865487630512}
   - component: {fileID: 865525843984791452}
   - component: {fileID: 3935507825716500055}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Trunk
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -521,7 +521,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.001503557, y: -0.19432306}
+  m_Offset: {x: 0.0027606487, y: -0.19432306}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -532,7 +532,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.9548934, y: 0.47302675}
+  m_Size: {x: 0.7914834, y: 0.47302675}
   m_EdgeRadius: 0
 --- !u!50 &6122384865487630512
 Rigidbody2D:
